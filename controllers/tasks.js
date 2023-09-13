@@ -1,27 +1,18 @@
+const asyncWrapper = require('../middleware/async');
 const Task = require('../models/taskModel');
 
-const getAllTasks = async(req, res) => {
-    try{
+const getAllTasks = asyncWrapper( async(req, res) => {
         const data = await Task.find({});
         res.status(200).json({data});
-    }
-    catch(err){
-        res.status(500).json({msg: err});
-    }
- }
+   
+ })
 
-const createTask =  async(req, res) => {
-    try{
+const createTask =  asyncWrapper(async(req, res) => {  
         const task = await Task.create(req.body);
         res.status(201).json({ task });
-    }
-    catch(err){
-        res.status(500).json({msg: err});
-    }
-   
-}
-const getTask =  async(req, res) => {
-    try{
+})
+
+const getTask = asyncWrapper ( async(req, res) => {
         const {id:taskID} = req.params
         const data = await Task.findOne({_id : taskID});
 
@@ -30,13 +21,10 @@ const getTask =  async(req, res) => {
         }
         res.status(200).json({data});
 
-    }catch(err){
-        res.status(500).json({msg:err});
-    }
-   
-}
-const updateTask = async (req, res) => {
-    try{
+  
+})
+
+const updateTask = asyncWrapper(async (req, res) => {
         const {id:taskID} = req.params;
         const data = await Task.findOneAndUpdate({_id : taskID}, req.body, {
             new:true,
@@ -46,14 +34,10 @@ const updateTask = async (req, res) => {
             return res.status(404).json({msg: `No task with id: ${taskID}`})
         }
         res.status(200).json({data});
-    }
-    catch(err){
-        res.status(500).json({msg: err});
-    }
-  
-}
+     
+})
+
 const deleteTask = async (req, res) => {
-    try {
         const {id:taskID} = req.params;
         const data = await Task.findOneAndDelete({_id: taskID });
 
@@ -62,13 +46,8 @@ const deleteTask = async (req, res) => {
          }
 
         res.status(200).json({data});
-        
-    } catch (err) {
-        res.status(500).json({msg: err});
-    }
+
 }
-
-
 
  module.exports = {
     getAllTasks,

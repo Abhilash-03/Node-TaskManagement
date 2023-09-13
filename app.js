@@ -6,6 +6,7 @@ const notFound = require('./middleware/notFound');
 
 // connected to database...
 const connectDB =  require('./db/connection');
+const errorHandler = require('./middleware/errorHandler');
 
 require('dotenv').config();
 
@@ -24,7 +25,7 @@ app.get('/', (req, res) => {
 app.use('/api/v1/tasks', tasks);
 
 app.use(notFound);
-
+app.use(errorHandler);
 
 const start = async() => {
        try{
