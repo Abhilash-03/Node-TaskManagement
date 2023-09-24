@@ -17,10 +17,6 @@ app.use(express.json());
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.get('/', (req, res) => {
-       res.sendFile(path.join(__dirname, 'public', 'index.html'));
-})
-
 // routers
 app.use('/api/v1/tasks', tasks);
 
@@ -30,7 +26,7 @@ app.use(errorHandler);
 const start = async() => {
        try{
             await connectDB(process.env.MONGO_URI);
-            app.listen(PORT, console.log(`Server listening at port ${PORT}...`));
+            app.listen(PORT, ()=> console.log(`Server listening at port ${PORT}...`));
 
        } catch(err){
               console.log(err);

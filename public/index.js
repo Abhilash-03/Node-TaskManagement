@@ -2,6 +2,7 @@ const form = document.getElementById('formBox');
 const inputVal = document.getElementById('input');
 const btn = document.getElementById('btn');
 const ul = document.querySelector('ul');
+let errMsg = document.getElementById('err-msg');
 
 let TASK_URL = 'api/v1/tasks'
 
@@ -17,9 +18,17 @@ form.addEventListener('submit', async(e)=>{
         "name" : name
     })
   });
-
+  
+  if(name.length > 40){
+     errMsg.style.display = 'block';
+     errMsg.style.color = 'red';
+     errMsg.innerText = 'Name cannot be more than 40 characters.'
+  }
   inputVal.value = '';
-
+  
+  setTimeout(() => {
+    errMsg.style.display = 'none';
+  }, 3000);
  showTasks();
 })
 
