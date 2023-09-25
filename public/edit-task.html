@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Task - Task Manager</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="eMain">
+    <h1>Update Task</h1>
+
+    <form id="editForm">
+    <div class="editBox">
+        <div class="editId row">
+            <label for="editId">Task ID</label>
+            <p class="task-edit-id"></p>
+        </div>
+        <div class="editRow row">
+        <label for="editName">Edit Task</label>
+        <input type="text" placeholder="Edit task" id="eTask">
+    </div>
+    <div class="completeRow row">
+        <label for="completedTask">Completed</label>
+        <input type="checkbox" id="checkBox">
+    </div>
+
+    <button type="submit" id="eBtn">Task Updated</button>
+    <p class="msg-alert"></p>
+    </div>
+    
+    <a href="index.html" class="backLink">Back to tasks</a>
+</form>
+
+</main>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.5.0/axios.min.js" integrity="sha512-aoTNnqZcT8B4AmeCFmiSnDlc4Nj/KPaZyB5G7JnOnUEkdNpCZs1LCankiYi01sLTyWy+m2P+W4XM+BuQ3Q4/Dg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="edit.js"></script>
+
+</body>
+</html>

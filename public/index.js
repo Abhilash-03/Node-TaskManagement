@@ -1,9 +1,8 @@
 const form = document.getElementById('formBox');
-const inputVal = document.getElementById('input');
+let inputVal = document.getElementById('input');
 const btn = document.getElementById('btn');
 const ul = document.querySelector('ul');
 let errMsg = document.getElementById('err-msg');
-
 let TASK_URL = 'api/v1/tasks'
 
 form.addEventListener('submit', async(e)=>{
@@ -40,7 +39,12 @@ const showTasks = async()=>{
     tasks.map(item => {
         const {name, _id: id, completed} = item
         list += `
-          <li class="single-task ${completed && 'task-complete'}"><span class="title"> ${name}</span> <span style="display: flex"> <button class="editBtn">Edit</button> <button class="delBtn" data-id=${id} >Del</button></span></li>
+          <li class="single-task ${completed && 'task-complete'}"><span class="title"> ${name}</span> <span style="display: flex">
+
+           <span class="editBtn btn"><a href="edit-task.html?id=${id}"><i class="fa-solid fa-pen-to-square"></i></a></span>
+            <span class="delBtn btn" data-id=${id}><i class="fa-solid fa-trash"></i></span>
+            
+            </span></li>
         `
     });
 
@@ -50,9 +54,9 @@ const showTasks = async()=>{
 
 ul.addEventListener('click', async(e)=>{
     let el = e.target;
-    if(el.classList.contains('delBtn')){
+    if(el.parentElement.classList.contains('delBtn')){
         try {
-            let id = el.dataset.id;
+            let id = el.parentElement.dataset.id;
             await fetch(`${TASK_URL}/${id}`, {
                 method : 'DELETE',
                 headers : {
@@ -71,6 +75,7 @@ ul.addEventListener('click', async(e)=>{
         console.log("something went wrong");
     }
 })
+
 
 
 showTasks();

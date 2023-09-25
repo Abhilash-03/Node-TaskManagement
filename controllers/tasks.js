@@ -25,7 +25,12 @@ const getTask = asyncWrapper ( async(req, res) => {
 })
 
 const updateTask = asyncWrapper(async (req, res) => {
+        const {name} = req.body;
+        if(!name){
+                res.status(400).json({msg: "Name should not be empty."});
+        }
         const {id:taskID} = req.params;
+
         const data = await Task.findOneAndUpdate({_id : taskID}, req.body, {
             new:true,
             newValidators:true

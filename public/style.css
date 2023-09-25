@@ -1,3 +1,5 @@
+  @import url('https://fonts.googleapis.com/css2?family=Martian+Mono&family=Merriweather&family=Roboto&display=swap');
+
 *{
     margin: 0;
     padding: 0;
@@ -14,13 +16,15 @@ h1{
     font-size: 2.34rem;
     padding-bottom: 1rem;
     text-align: center;
+    font-family: 'Merriweather', serif;
 }
 
 .inputArea{
    display: flex;
    justify-content: space-between;
    flex-direction: column;
-   margin: 6% auto;
+   margin: auto;
+   margin-top: 80px;
    max-width: 765px;
    border: 2px solid white;
    background-color: white;
@@ -31,12 +35,13 @@ h1{
    box-shadow: 6px 5px 30px black;
 }
 
-input{
+input[type="text"]{
     height: 50px;
     width: 73%;
     font-size: 1.1rem;
     padding: 5px 10px;
     outline: none;
+    font-family: 'Martian Mono', monospace;
 }
 
 input:hover, input:focus{
@@ -52,6 +57,8 @@ button{
     width: 25%;
     cursor: pointer;
     background: #a2a2ff;
+   font-family: 'Roboto', sans-serif;
+
 }
 
 button:hover{
@@ -96,7 +103,7 @@ ul{
     list-style: none;
     box-shadow: 2px 3px 10px black;
     /* height: 50px; */
-  
+    font-family: 'Martian Mono', monospace;
     font-size: 21px;
     padding: 1rem;
     background: white;
@@ -118,4 +125,127 @@ ul{
 
 .taskArea ul .task-complete .title{
     text-decoration: line-through 2px red;
+}
+.eMain{
+    padding: 2rem;
+    min-width: 200px;
+    box-shadow: 3px 4px 30px black;
+    background-color: white;
+    max-width: 700px;
+    min-width: 200px;
+    margin: auto;
+    margin-top: 1rem;
+}
+.editBox{
+    max-width: 700px;
+    margin: auto;
+    min-width: 200px;
+}
+
+
+.eMain .row{
+    margin: 2rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.eMain .row label{
+    font-size: 1.9rem;
+    margin: 1rem;
+}
+
+input[type="checkbox"]{
+    min-width: 50px;
+    min-height: 30px;
+    box-shadow: none;
+    cursor: pointer;
+}
+
+.eMain #eBtn{
+    width: 100%;
+    margin: auto;
+    background-color: black;
+    color: whitesmoke;
+}
+
+.eMain #eBtn:hover{
+    background: #d2defa;
+    color: black;
+}
+
+a{
+    color: black;
+    text-decoration: none;
+}
+
+.backLink{
+    border: 2px solid black;
+    padding: 1rem;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   max-width: 200px;
+   margin: 2rem auto;
+   background-color: white;
+}
+
+.backLink:hover{
+    box-shadow: 2px 4px 16px black;
+    background-color: #7676ff;
+    border-radius: 50px;
+}
+
+.task-edit-id{
+    font-size: 1.5rem;
+    border: 1px solid black;
+    padding: 1rem;
+    background: #5b5b5b;
+    color: white;
+    width: auto;
+}
+
+.msg-alert{
+    display: none;
+    color: green;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    padding: 10px 0;
+}
+
+.single-task .btn{
+    padding: 0 10px;
+    cursor: pointer;
+}
+
+.single-task .delBtn i:hover{
+   color: red;  
+}
+.single-task .editBtn i:hover{
+   color: green;  
+}
+
+@media screen and (max-width: 530px) {
+    .eMain .row label {
+        font-size: 1.1rem;
+        margin: 7px;
+    }
+
+    .task-edit-id{
+        font-size: 1rem;
+    }
+    .eMain .row {
+        margin: 1rem 0px;
+    }
+
+    .taskArea ul li {
+        font-size: 15px;
+    }
+    input[type="text"] {
+        font-size: 13px;
+    }
+    button{
+        font-size: 1rem;
+    }
 }
